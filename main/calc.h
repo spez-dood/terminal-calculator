@@ -12,13 +12,13 @@ struct Command {
 class Calculator {
 public:
     Calculator();
-    double Calculate(double x, char oper, double y);
     bool is_running();
     void Run_Command();
-    Command Get_Command();
 private:
     bool _running;
     const char* _help_message;
+    double Calculate(double x, char oper, double y);
+    Command Get_Command();
 };
 
 #endif
