@@ -1,8 +1,6 @@
 #ifndef calc_h
 #define calc_h
 
-#include <string>
-
 enum class CmdType { Operation, Exit, Clear, Help, Invalid };
 
 struct Command {
@@ -20,7 +18,7 @@ public:
     Command Get_Command();
 private:
     bool _running;
-    std::string _help_message;
+    const char* _help_message;
 };
 
 #endif
