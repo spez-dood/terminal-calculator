@@ -9,12 +9,13 @@
 Calculator::Calculator() {
     this->_running = true;
 
-    this->_help_message = "Please enter the operation to perform.\n";
-    this->_help_message += "Format (spaces don't matter): a+b, a-b, a*b, a/b\n";
-    this->_help_message += "Type 'clear' to clear the screen.\n";
-    this->_help_message += "Type 'exit' to quit.\n";
-    this->_help_message += "Type 'help' at any time to bring this text up again.\n";
-    this->_help_message += "=======================================================\n\n";
+    this->_help_message =
+        "Please enter the operation to perform.\n"
+        "Format (spaces don't matter): a+b, a-b, a*b, a/b\n"
+        "Type 'clear' to clear the screen.\n"
+        "Type 'exit' to quit.\n"
+        "Type 'help' at any time to bring this text up again.\n"
+        "=======================================================\n\n";
 
     std::cout << "\n              ~~<CALCULATOR APP>~~\n"
               << "=================================================\n\n"
