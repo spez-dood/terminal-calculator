@@ -1,2 +1,5 @@
-# terminal-calculator
-A simple terminal calculator I made in c++.
+Run the makefile, or compile and run it however you like.
+
+It's a simple a+b, a-b calculator that runs in the terminal,
+with a few basic commands thrown in for exiting the program,
+displaying the instructions, and clearing the screen.
