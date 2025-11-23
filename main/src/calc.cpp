@@ -1,10 +1,20 @@
 #include <iostream>
 #include <algorithm>
-#include <cctype>
-#include <string>
+#include <cstring>
 #include <sstream>
 
 #include "calc.h"
+
+void remove_char(char* str, char c) {
+    char* write = str;
+
+    for (char* read = str; *read != '\0'; read++) {
+        if (*read == c) { continue; }
+        *write = *read;
+        write++;
+    }
+    *write = '\0';
+}
 
 Calculator::Calculator() {
     this->_running = true;
@@ -26,26 +36,23 @@ bool Calculator::is_running() {
     return this->_running;
 }
 
-char to_lower(char c) {
-    return std::tolower(static_cast<unsigned char>(c));
-};
-
 Command Calculator::Get_Command() {
-    std::string cmd;
-    std::getline(std::cin, cmd);
+    if (!std::cin.getline(this->_cmd, 65)) {
+        return {CmdType::Invalid};
+    }
 
-    cmd.erase(remove(cmd.begin(), cmd.end(), ' '), cmd.end());
+    remove_char(this->_cmd, ' ');
 
-    std::transform(cmd.begin(), cmd.end(), cmd.begin(), to_lower);
+    std::transform(this->_cmd, this->_cmd+std::strlen(this->_cmd), this->_cmd, ::tolower);
 
-    if (cmd == "help") return {CmdType::Help}; 
-    if (cmd == "exit") return {CmdType::Exit};
-    if (cmd == "clear") return {CmdType::Clear};
+    if (std::strcmp(this->_cmd, "help") == 0) return {CmdType::Help}; 
+    if (std::strcmp(this->_cmd, "exit") == 0) return {CmdType::Exit};
+    if (std::strcmp(this->_cmd, "clear") == 0) return {CmdType::Clear};
 
     double x = 0.0;
     double y = 0.0;
     char oper = '+';
-    std::istringstream iss(cmd);
+    std::istringstream iss(this->_cmd);
 
     if (iss >> x >> oper >> y) {
         return {CmdType::Operation, x, y, oper};
