@@ -17,6 +17,7 @@ public:
 private:
     bool _running;
     const char* _help_message;
+    char _cmd[64];
     double Calculate(double x, char oper, double y);
     Command Get_Command();
 };
