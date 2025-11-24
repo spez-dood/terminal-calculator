@@ -26,17 +26,13 @@ bool Calculator::is_running() {
     return this->_running;
 }
 
-char to_lower(char c) {
-    return std::tolower(static_cast<unsigned char>(c));
-};
-
 Command Calculator::Get_Command() {
     std::string cmd;
     std::getline(std::cin, cmd);
 
     cmd.erase(remove(cmd.begin(), cmd.end(), ' '), cmd.end());
 
-    std::transform(cmd.begin(), cmd.end(), cmd.begin(), to_lower);
+    std::transform(cmd.begin(), cmd.end(), cmd.begin(), ::tolower);
 
     if (cmd == "help") return {CmdType::Help}; 
     if (cmd == "exit") return {CmdType::Exit};
