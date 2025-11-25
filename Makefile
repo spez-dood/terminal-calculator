@@ -19,7 +19,7 @@ $(APPNAME): $(OBJ)
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	mkdir -p $(dir $@)
 	$(CC) $(CXXFLAGS) -c $< -o $@
-	mv $(OBJDIR)/$*.d $(APPDIR)/$*.d 2>/dev/null || :
+	mv $(OBJDIR)/$*.d $(APPDIR)/$*.d
 
 -include $(DEP)
 
